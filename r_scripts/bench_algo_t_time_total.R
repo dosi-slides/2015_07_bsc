@@ -3,8 +3,8 @@ Sys.setlocale("LC_MESSAGES", 'french')
 
 bench <- "benchmark_olpaggreg3/results/bench_tall_res"
 
-h <- 2.7
-w <- 4.6
+h <- 2
+w <- 5
 
 read_data <- function(file) {
   df <- read.csv(file, header=TRUE, sep = ",", strip.white=TRUE)
@@ -20,16 +20,11 @@ dtemp$TIMETOTAL<-dtemp$TIMEQ+dtemp$TIMEDICHO+dtemp$TIMEBC
 dtemp<-dtemp[(dtemp$DIM2 %in% 1000),]
 dtemp<-dtemp[(dtemp$DIM3 %in% 10),]
 xlabel<- "|T|"
-ylabel<- "Temps d'exécution (s)"
+ylabel<- "Execution time (s)"
 plot<-ggplot(dtemp, aes(x=DIM1, y=TIMEQ/1000))
-#, color=DIM1))
 plot<-plot + geom_point()
 plot<-plot + stat_smooth(method="lm", formula=y ~ I(x^2), alpha=0.7, colour="red")
-#plot<-plot + theme_bw()
-#plot<-plot + labs(x=xlabel,y=ylabel,title=legend)
 plot<-plot + labs(x=xlabel,y=ylabel)
-#plot<-plot + scale_color_gradient2(
-#name="|T|",midpoint=1000,low='blue',mid='green', high='red')
 plot
 }
 
@@ -38,16 +33,11 @@ dtemp<-data
 dtemp<-dtemp[(dtemp$DIM2 %in% 1000),]
 dtemp<-dtemp[(dtemp$DIM3 %in% 10),]
 xlabel<- "|T|"
-ylabel<- "Temps d'exécution (s)"
+ylabel<- "Execution time (s)"
 plot<-ggplot(dtemp, aes(x=DIM1, y=TIMEQ/1000))
-#, color=DIM1))
 plot<-plot + geom_point()
 plot<-plot + stat_smooth(method="lm", formula=y ~ I(x^2), alpha=0.7, colour="red")
-#plot<-plot + theme_bw()
-#plot<-plot + labs(x=xlabel,y=ylabel,title=legend)
 plot<-plot + labs(x=xlabel,y=ylabel)
-#plot<-plot + scale_color_gradient2(
-#name="|T|",midpoint=1000,low='blue',mid='green', high='red')
 plot
 }
 
@@ -56,16 +46,11 @@ dtemp<-data
 dtemp<-dtemp[(dtemp$DIM1 %in% 1000),]
 dtemp<-dtemp[(dtemp$DIM3 %in% 10),]
 xlabel<- "|S|"
-ylabel<- "Temps d'exécution (s)"
+ylabel<- "Execution time (s)"
 plot<-ggplot(dtemp, aes(x=DIM2, y=TIMEQ/1000))
-#, color=DIM1))
 plot<-plot + geom_point()
 plot<-plot + stat_smooth(method="lm", formula=y ~ I(x), alpha=0.7, colour="blue")
-#plot<-plot + theme_bw()
-#plot<-plot + labs(x=xlabel,y=ylabel,title=legend)
 plot<-plot + labs(x=xlabel,y=ylabel)
-#plot<-plot + scale_color_gradient2(
-#name="|T|",midpoint=1000,low='blue',mid='green', high='red')
 plot
 }
 
@@ -73,15 +58,13 @@ printQualitiesBK <- function(data){
 dtemp<-data
 dtemp$DIMN<-dtemp$DIM1^2*dtemp$DIM2*dtemp$DIM3
 xlabel<- "|T|^2 * |S| * |J(E)|"
-ylabel<- "Temps d'exécution (s)"
+ylabel<- "Execution time (s)"
 plot<-ggplot(dtemp, aes(x=DIMN, y=TIMEQ/1000, color=DIM1))
 plot<-plot + geom_point()
 plot<-plot + theme_bw()
-#plot<-plot + labs(x=xlabel,y=ylabel,title=legend)
 plot<-plot + labs(x=xlabel,y=ylabel)
 plot<-plot + scale_color_gradient2(
 name="|T|",midpoint=1000,low='blue',mid='green', high='red')
-#plot<-plot + theme(legend.position=c(1,0.4),legend.justification=c(1,1))
 plot
 }
 
@@ -90,7 +73,7 @@ dtemp<-data
 dtemp<-dtemp[(dtemp$DIM2 %in% 1000),]
 dtemp<-dtemp[(dtemp$DIM3 %in% 10),]
 xlabel<- "|T|"
-ylabel<- "Temps d'exécution (s)"
+ylabel<- "Execution time (s)"
 plot<-ggplot(dtemp, aes(x=DIM1, y=TIMEDICHO/1000)) + labs(list(x=xlabel,y=ylabel))
 plot<-plot + geom_point()
 plot<-plot + stat_smooth(method="lm", formula=y ~ I(x^2), alpha=0.7, colour="red")
@@ -102,7 +85,7 @@ dtemp<-data
 dtemp<-dtemp[(dtemp$DIM1 %in% 1000),]
 dtemp<-dtemp[(dtemp$DIM3 %in% 10),]
 xlabel<- "|S|"
-ylabel<- "Temps d'exécution (s)"
+ylabel<- "Execution time (s)"
 plot<-ggplot(dtemp, aes(x=DIM2, y=TIMEDICHO/1000)) + labs(list(x=xlabel,y=ylabel))
 plot<-plot + stat_smooth(method="lm", formula=y ~ I(x), alpha=0.7, colour="blue")
 plot<-plot + geom_point()
@@ -113,7 +96,7 @@ printParts <- function(data){
 dtemp<-data
 dtemp$TIMEPARTS<-dtemp$TIMEBC
 xlabel<- "|T|"
-ylabel<- "Temps d'exécution (s)"
+ylabel<- "Execution time (s)"
 plot<-ggplot(dtemp, aes(x=DIM1, y=TIMEPARTS/1000)) + labs(list(x=xlabel,y=ylabel))
 plot<-plot + geom_point()
 plot<-plot + stat_smooth(method="lm", formula=y ~ I(x^2), alpha=0.7, colour="red")

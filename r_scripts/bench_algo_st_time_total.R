@@ -18,43 +18,43 @@ printTotal2 <- function(data){
 dtemp<-data
 dtemp$DIMN<-dtemp$DIM1^3*dtemp$NODES
 dtemp$TIMETOTAL<-dtemp$TIMEQ+dtemp$TIMEDICHO+dtemp$TIMEBC+dtemp$TIMEBP
-dtemp[dtemp$TREE %in% 2, "TREE"]<-"Binaire"
-dtemp[dtemp$TREE %in% 3, "TREE"]<-"Ternaire"
-dtemp[dtemp$TREE %in% 5, "TREE"]<-"Quinquénaire"
-dtemp[dtemp$TREE %in% 10, "TREE"]<-"Décennaire"
+dtemp[dtemp$TREE %in% 2, "TREE"]<-"2"
+dtemp[dtemp$TREE %in% 3, "TREE"]<-"3"
+dtemp[dtemp$TREE %in% 5, "TREE"]<-"5"
+dtemp[dtemp$TREE %in% 10, "TREE"]<-"10"
 xlabel<- "|T|^3 * |H(S)|"
-ylabel<- "Temps d'exécution (s)"
+ylabel<- "Execution time (s)"
 plot<-ggplot(dtemp, aes(x=DIMN, y=TIMETOTAL/1000, shape=TREE, color=DIM3))
 plot<-plot + geom_point()
 plot<-plot + theme_bw()
 plot<-plot + labs(x=xlabel,y=ylabel)
 plot<-plot + scale_color_gradient2(
 name="Event Type number",midpoint=100,low='blue',mid='green', high='red')
-plot<-plot + scale_shape_manual(name="Arbre",values=c(0,1,2,3))
+plot<-plot + scale_shape_manual(name="Tree",values=c(0,1,2,3))
 plot
 }
 
 printTotal <- function(data){
 dtemp<-data
 dtemp$TIMETOTAL<-dtemp$TIMEQ+dtemp$TIMEDICHO+dtemp$TIMEBC+dtemp$TIMEBP
-dtemp[dtemp$TREE %in% 2, "TREE"]<-"Binaire"
-dtemp[dtemp$TREE %in% 3, "TREE"]<-"Ternaire"
-dtemp[dtemp$TREE %in% 5, "TREE"]<-"Quinquénaire"
-dtemp[dtemp$TREE %in% 10, "TREE"]<-"Décennaire"
+dtemp[dtemp$TREE %in% 2, "TREE"]<-"2"
+dtemp[dtemp$TREE %in% 3, "TREE"]<-"3"
+dtemp[dtemp$TREE %in% 5, "TREE"]<-"5"
+dtemp[dtemp$TREE %in% 10, "TREE"]<-"10"
 dtemp<-dtemp[(dtemp$LVL %in% 4),]
 dtemp<-dtemp[(dtemp$DIM3 %in% 10),]
 xlabel<- "|T|"
-ylabel<- "Temps d'exécution (s)"
+ylabel<- "Execution time (s)"
 plot<-ggplot(dtemp, aes(x=DIM1, y=TIMETOTAL/1000, color=TREE, group=TREE, shape=TREE))
 plot<-plot + geom_point()
 plot<-plot + labs(x=xlabel,y=ylabel)
 plot<-plot + stat_smooth(method="lm", formula=y ~ I(x^3+x^2), alpha=0.5)
-plot<-plot + scale_color_discrete(name="Arité (4 niv.)",
-breaks=c("Binaire", "Ternaire", "Quinquénaire", "Décennaire"),
+plot<-plot + scale_color_discrete(name="Arity (4 niv.)",
+breaks=c("2", "3", "5", "10"),
 labels=c("2","3","5","10"))
-plot<-plot+ scale_shape_manual(name="Arité (4 niv.)",
+plot<-plot+ scale_shape_manual(name="Arity (4 niv.)",
 values=c(0,1,2,3),
-breaks=c("Binaire", "Ternaire", "Quinquénaire", "Décennaire"),
+breaks=c("2", "3", "5", "10"),
 labels=c("2","3","5","10"))
 plot
 }
@@ -65,24 +65,24 @@ plot
 
 printQualitiesT <- function(data){
 dtemp<-data
-dtemp[dtemp$TREE %in% 2, "TREE"]<-"Binaire"
-dtemp[dtemp$TREE %in% 3, "TREE"]<-"Ternaire"
-dtemp[dtemp$TREE %in% 5, "TREE"]<-"Quinquénaire"
-dtemp[dtemp$TREE %in% 10, "TREE"]<-"Décennaire"
+dtemp[dtemp$TREE %in% 2, "TREE"]<-"2"
+dtemp[dtemp$TREE %in% 3, "TREE"]<-"3"
+dtemp[dtemp$TREE %in% 5, "TREE"]<-"5"
+dtemp[dtemp$TREE %in% 10, "TREE"]<-"10"
 dtemp<-dtemp[(dtemp$LVL %in% 4),]
 dtemp<-dtemp[(dtemp$DIM3 %in% 10),]
 xlabel<- "|T|"
-ylabel<- "Temps d'exécution (s)"
+ylabel<- "Execution time (s)"
 plot<-ggplot(dtemp, aes(x=DIM1, y=TIMEQ/1000, color=TREE, group=TREE, shape=TREE))
 plot<-plot + geom_point()
 plot<-plot + labs(x=xlabel,y=ylabel)
 plot<-plot + stat_smooth(method="lm", formula=y ~ I(x^2), alpha=0.5)
-plot<-plot + scale_color_discrete(name="Arité (4 niv.)",
-breaks=c("Binaire", "Ternaire", "Quinquénaire", "Décennaire"),
+plot<-plot + scale_color_discrete(name="Arity (4 niv.)",
+breaks=c("2", "3", "5", "10"),
 labels=c("2","3","5","10"))
-plot<-plot+ scale_shape_manual(name="Arité (4 niv.)",
+plot<-plot+ scale_shape_manual(name="Arity (4 niv.)",
 values=c(0,1,2,3),
-breaks=c("Binaire", "Ternaire", "Quinquénaire", "Décennaire"),
+breaks=c("2", "3", "5", "10"),
 labels=c("2","3","5","10"))
 plot
 }
@@ -90,23 +90,23 @@ plot
 printQualitiesS <- function(data){
 dtemp<-data
 dtemp<-dtemp[(dtemp$NODES < 5000),]
-dtemp[dtemp$TREE %in% 2, "TREE"]<-"Binaire"
-dtemp[dtemp$TREE %in% 3, "TREE"]<-"Ternaire"
-dtemp[dtemp$TREE %in% 5, "TREE"]<-"Quinquénaire"
-dtemp[dtemp$TREE %in% 10, "TREE"]<-"Décennaire"
+dtemp[dtemp$TREE %in% 2, "TREE"]<-"2"
+dtemp[dtemp$TREE %in% 3, "TREE"]<-"3"
+dtemp[dtemp$TREE %in% 5, "TREE"]<-"5"
+dtemp[dtemp$TREE %in% 10, "TREE"]<-"10"
 dtemp<-dtemp[(dtemp$DIM1 %in% 30),]
 dtemp<-dtemp[(dtemp$DIM3 %in% 10),]
 xlabel<- "|H(S)|"
-ylabel<- "Temps d'exécution (s)"
+ylabel<- "Execution time (s)"
 plot<-ggplot(dtemp, aes(x=NODES, y=TIMEQ/1000, color=TREE, group=TREE, shape=TREE))
 plot<-plot + geom_point()
 plot<-plot + labs(x=xlabel,y=ylabel)
-plot<-plot + scale_color_discrete(name="Arité",
-breaks=c("Binaire", "Ternaire", "Quinquénaire", "Décennaire"),
+plot<-plot + scale_color_discrete(name="Arity",
+breaks=c("2", "3", "5", "10"),
 labels=c("2", "3", "5", "10"))
-plot<-plot+ scale_shape_manual(name="Arité",
+plot<-plot+ scale_shape_manual(name="Arity",
 values=c(0,1,2,3),
-breaks=c("Binaire", "Ternaire", "Quinquénaire", "Décennaire"),
+breaks=c("2", "3", "5", "10"),
 labels=c("2", "3", "5", "10"))
 plot<-plot + stat_smooth(method="lm", formula=y ~ I(x), alpha=0.5)
 plot
@@ -115,88 +115,88 @@ plot
 printQualitiesCounter <- function(data){
 dtemp<-data
 dtemp$DIMN<-dtemp$DIM1^2*(dtemp$NODES)*dtemp$DIM3
-dtemp[dtemp$TREE %in% 2, "TREE"]<-"Binaire"
-dtemp[dtemp$TREE %in% 3, "TREE"]<-"Ternaire"
-dtemp[dtemp$TREE %in% 5, "TREE"]<-"Quinquénaire"
-dtemp[dtemp$TREE %in% 10, "TREE"]<-"Décennaire"
+dtemp[dtemp$TREE %in% 2, "TREE"]<-"2"
+dtemp[dtemp$TREE %in% 3, "TREE"]<-"3"
+dtemp[dtemp$TREE %in% 5, "TREE"]<-"5"
+dtemp[dtemp$TREE %in% 10, "TREE"]<-"10"
 xlabel<- "|T|^3 * |H(S)| * |J(E)|"
 ylabel<- "Compteur d'assignation"
 plot<-ggplot(dtemp, aes(x=DIMN, y=COUNTERQ/1000, color=TREE))
 plot<-plot + geom_point()
 plot<-plot + theme_bw()
 plot<-plot + labs(x=xlabel,y=ylabel)
-plot<-plot + scale_color_discrete(name="Arbre")
+plot<-plot + scale_color_discrete(name="Tree")
 plot
 }
 
 printDicho <- function(data){
 dtemp<-data
-dtemp[dtemp$TREE %in% 2, "TREE"]<-"Binaire"
-dtemp[dtemp$TREE %in% 3, "TREE"]<-"Ternaire"
-dtemp[dtemp$TREE %in% 5, "TREE"]<-"Quinquénaire"
-dtemp[dtemp$TREE %in% 10, "TREE"]<-"Décennaire"
+dtemp[dtemp$TREE %in% 2, "TREE"]<-"2"
+dtemp[dtemp$TREE %in% 3, "TREE"]<-"3"
+dtemp[dtemp$TREE %in% 5, "TREE"]<-"5"
+dtemp[dtemp$TREE %in% 10, "TREE"]<-"10"
 dtemp<-dtemp[(dtemp$LVL %in% 4),]
 dtemp<-dtemp[(dtemp$DIM3 %in% 10),]
 xlabel<- "|T|"
-ylabel<- "Temps d'exécution (s)"
+ylabel<- "Execution time (s)"
 plot<-ggplot(dtemp, aes(x=DIM1, y=TIMEDICHO/1000, color=TREE, group=TREE, shape=TREE))
 plot<-plot + geom_point()
 plot<-plot + labs(x=xlabel,y=ylabel)
 plot<-plot + stat_smooth(method="lm", formula=y ~ I(x^3), alpha=0.5)
-plot<-plot + scale_color_discrete(name="Arité (4 niv.)",
-breaks=c("Binaire", "Ternaire", "Quinquénaire", "Décennaire"),
+plot<-plot + scale_color_discrete(name="Arity (4 niv.)",
+breaks=c("2", "3", "5", "10"),
 labels=c("2","3","5","10"))
-plot<-plot+ scale_shape_manual(name="Arité (4 niv.)",
+plot<-plot+ scale_shape_manual(name="Arity (4 niv.)",
 values=c(0,1,2,3),
-breaks=c("Binaire", "Ternaire", "Quinquénaire", "Décennaire"),
+breaks=c("2", "3", "5", "10"),
 labels=c("2","3","5","10"))
 plot
 }
 
 printPartsT <- function(data){
 dtemp<-data
-dtemp[dtemp$TREE %in% 2, "TREE"]<-"Binaire"
-dtemp[dtemp$TREE %in% 3, "TREE"]<-"Ternaire"
-dtemp[dtemp$TREE %in% 5, "TREE"]<-"Quinquénaire"
-dtemp[dtemp$TREE %in% 10, "TREE"]<-"Décennaire"
+dtemp[dtemp$TREE %in% 2, "TREE"]<-"2"
+dtemp[dtemp$TREE %in% 3, "TREE"]<-"3"
+dtemp[dtemp$TREE %in% 5, "TREE"]<-"5"
+dtemp[dtemp$TREE %in% 10, "TREE"]<-"10"
 dtemp<-dtemp[(dtemp$LVL %in% 4),]
 dtemp<-dtemp[(dtemp$DIM3 %in% 10),]
 xlabel<- "|T|"
-ylabel<- "Temps d'exécution (s)"
+ylabel<- "Execution time (s)"
 plot<-ggplot(dtemp, aes(x=DIM1, y=TIMEBC/1000, color=TREE, group=TREE, shape=TREE))
 plot<-plot + geom_point()
 plot<-plot + labs(x=xlabel,y=ylabel)
 plot<-plot + stat_smooth(method="lm", formula=y ~ I(x^3), alpha=0.5)
-plot<-plot + scale_color_discrete(name="Arité (4 niv.)",
-breaks=c("Binaire", "Ternaire", "Quinquénaire", "Décennaire"),
+plot<-plot + scale_color_discrete(name="Arity (4 niv.)",
+breaks=c("2", "3", "5", "10"),
 labels=c("2","3","5","10"))
-plot<-plot+ scale_shape_manual(name="Arité (4 niv.)",
+plot<-plot+ scale_shape_manual(name="Arity (4 niv.)",
 values=c(0,1,2,3),
-breaks=c("Binaire", "Ternaire", "Quinquénaire", "Décennaire"),
+breaks=c("2", "3", "5", "10"),
 labels=c("2","3","5","10"))
 plot
 }
 
 printPartsS <- function(data){
 dtemp<-data
-dtemp[dtemp$TREE %in% 2, "TREE"]<-"Binaire"
-dtemp[dtemp$TREE %in% 3, "TREE"]<-"Ternaire"
-dtemp[dtemp$TREE %in% 5, "TREE"]<-"Quinquénaire"
-dtemp[dtemp$TREE %in% 10, "TREE"]<-"Décennaire"
+dtemp[dtemp$TREE %in% 2, "TREE"]<-"2"
+dtemp[dtemp$TREE %in% 3, "TREE"]<-"3"
+dtemp[dtemp$TREE %in% 5, "TREE"]<-"5"
+dtemp[dtemp$TREE %in% 10, "TREE"]<-"10"
 dtemp<-dtemp[(dtemp$DIM1 %in% 30),]
 dtemp<-dtemp[(dtemp$DIM3 %in% 10),]
 xlabel<- "|H(S)|"
-ylabel<- "Temps d'exécution (s)"
+ylabel<- "Execution time (s)"
 plot<-ggplot(dtemp, aes(x=NODES, y=TIMEBC/1000, color=TREE, group=TREE, shape=TREE))
 plot<-plot + geom_point()
 plot<-plot + labs(x=xlabel,y=ylabel)
 plot<-plot + stat_smooth(method="lm", formula=y ~ I(x), alpha=0.5)
-plot<-plot + scale_color_discrete(name="Arité",
-breaks=c("Binaire", "Ternaire", "Quinquénaire", "Décennaire"),
+plot<-plot + scale_color_discrete(name="Arity",
+breaks=c("2", "3", "5", "10"),
 labels=c("2","3","5","10"))
-plot<-plot+ scale_shape_manual(name="Arité",
+plot<-plot+ scale_shape_manual(name="Arity",
 values=c(0,1,2,3),
-breaks=c("Binaire", "Ternaire", "Quinquénaire", "Décennaire"),
+breaks=c("2", "3", "5", "10"),
 labels=c("2","3","5","10"))
 plot
 }
