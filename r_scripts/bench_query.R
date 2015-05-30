@@ -26,11 +26,11 @@ plot<-plot + geom_line()
 #plot<-plot + theme_bw()
 plot<-plot + labs(x=xlabel,y=ylabel)
 plot<-plot + scale_color_discrete(name="Query Optimization",
-breaks=c("NOPT", "T", "ET", "TET" "EP", "TEP", "EPET", "OPT"),
+breaks=c("NOPT", "T", "ET", "TET", "EP", "TEP", "EPET", "OPT"),
 labels=c("No Optmization", "Time", "Event Types", "Time + Event Types", "Space", "Time + Space", "Space + Event Types", "Full Optimization" ))
 plot<-plot+ scale_shape_manual(name="Query Optimization",
 values=c(0,1,2,3,4,5,6,7),
-breaks=c("NOPT", "T", "ET", "TET" "EP", "TEP", "EPET", "OPT"),
+breaks=c("NOPT", "T", "ET", "TET", "EP", "TEP", "EPET", "OPT"),
 labels=c("No Optmization", "Time", "Event Types", "Time + Event Types", "Space", "Time + Space", "Space + Event Types", "Full Optimization" ))
 plot
 }
