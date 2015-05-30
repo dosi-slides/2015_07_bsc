@@ -3,8 +3,8 @@ Sys.setlocale("LC_MESSAGES", 'french')
 
 bench <- "benchmark_dlpaggreg2/results/bench_st_nall_res"
 
-h <- 2.7
-w <- 4.6
+h <- 2
+w <- 5
 
 read_data <- function(file) {
   df <- read.csv(file, header=TRUE, sep = ",", strip.white=TRUE)

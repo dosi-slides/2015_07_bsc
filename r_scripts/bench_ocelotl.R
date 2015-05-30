@@ -26,11 +26,11 @@ plot<-plot + geom_line()
 plot<-plot + labs(x=xlabel,y=ylabel)
 plot<-plot + scale_color_discrete(name="Building strategy",
 breaks=c("NOCACHE", "CLEAN", "APPROX"),
-labels=c("Database query", "Cache (perfect)", "Cache (approximate"))
-plot<-plot+ scale_shape_manual(name="Stratégie de reconstruction",
+labels=c("Database query", "Cache (perfect)", "Cache (approximate)"))
+plot<-plot+ scale_shape_manual(name="Building strategy",
 values=c(0,5,2),
 breaks=c("NOCACHE", "CLEAN", "APPROX"),
-labels=c("Database query", "Cache (perfect)", "Cache (approximate"))
+labels=c("Database query", "Cache (perfect)", "Cache (approximate)"))
 plot
 }
 
