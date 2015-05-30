@@ -17,7 +17,7 @@ ifeq ($(OS),Windows_NT)
 endif
 
 rcmd : $(RSRC)
-	for file in $(RSRC); do $(RCMD) $(RDATADIR) $(RIMGDIR) < $${file} >> r.tmp ; done
+	for file in $(RSRC); do $(RCMD) $(RDATADIR) $(RIMGDIR) < $${file} ; done
 	
 clean :
 	rm -rf ${TODO} ${RIMGDIR}/*
