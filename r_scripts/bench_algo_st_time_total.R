@@ -49,10 +49,10 @@ plot<-ggplot(dtemp, aes(x=DIM1, y=TIMETOTAL/1000, color=TREE, group=TREE, shape=
 plot<-plot + geom_point()
 plot<-plot + labs(x=xlabel,y=ylabel)
 plot<-plot + stat_smooth(method="lm", formula=y ~ I(x^3+x^2), alpha=0.5)
-plot<-plot + scale_color_discrete(name="Arity (4 niv.)",
+plot<-plot + scale_color_discrete(name="Arity (4 levels)",
 breaks=c("2", "3", "5", "10"),
 labels=c("2","3","5","10"))
-plot<-plot+ scale_shape_manual(name="Arity (4 niv.)",
+plot<-plot+ scale_shape_manual(name="Arity (4 levels)",
 values=c(0,1,2,3),
 breaks=c("2", "3", "5", "10"),
 labels=c("2","3","5","10"))
@@ -77,10 +77,10 @@ plot<-ggplot(dtemp, aes(x=DIM1, y=TIMEQ/1000, color=TREE, group=TREE, shape=TREE
 plot<-plot + geom_point()
 plot<-plot + labs(x=xlabel,y=ylabel)
 plot<-plot + stat_smooth(method="lm", formula=y ~ I(x^2), alpha=0.5)
-plot<-plot + scale_color_discrete(name="Arity (4 niv.)",
+plot<-plot + scale_color_discrete(name="Arity (4 levels)",
 breaks=c("2", "3", "5", "10"),
 labels=c("2","3","5","10"))
-plot<-plot+ scale_shape_manual(name="Arity (4 niv.)",
+plot<-plot+ scale_shape_manual(name="Arity (4 levels)",
 values=c(0,1,2,3),
 breaks=c("2", "3", "5", "10"),
 labels=c("2","3","5","10"))
@@ -143,10 +143,10 @@ plot<-ggplot(dtemp, aes(x=DIM1, y=TIMEDICHO/1000, color=TREE, group=TREE, shape=
 plot<-plot + geom_point()
 plot<-plot + labs(x=xlabel,y=ylabel)
 plot<-plot + stat_smooth(method="lm", formula=y ~ I(x^3), alpha=0.5)
-plot<-plot + scale_color_discrete(name="Arity (4 niv.)",
+plot<-plot + scale_color_discrete(name="Arity (4 levels)",
 breaks=c("2", "3", "5", "10"),
 labels=c("2","3","5","10"))
-plot<-plot+ scale_shape_manual(name="Arity (4 niv.)",
+plot<-plot+ scale_shape_manual(name="Arity (4 levels)",
 values=c(0,1,2,3),
 breaks=c("2", "3", "5", "10"),
 labels=c("2","3","5","10"))
@@ -167,10 +167,10 @@ plot<-ggplot(dtemp, aes(x=DIM1, y=TIMEBC/1000, color=TREE, group=TREE, shape=TRE
 plot<-plot + geom_point()
 plot<-plot + labs(x=xlabel,y=ylabel)
 plot<-plot + stat_smooth(method="lm", formula=y ~ I(x^3), alpha=0.5)
-plot<-plot + scale_color_discrete(name="Arity (4 niv.)",
+plot<-plot + scale_color_discrete(name="Arity (4 levels)",
 breaks=c("2", "3", "5", "10"),
 labels=c("2","3","5","10"))
-plot<-plot+ scale_shape_manual(name="Arity (4 niv.)",
+plot<-plot+ scale_shape_manual(name="Arity (4 levels)",
 values=c(0,1,2,3),
 breaks=c("2", "3", "5", "10"),
 labels=c("2","3","5","10"))
