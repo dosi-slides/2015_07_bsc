@@ -4,8 +4,8 @@ Sys.setlocale("LC_MESSAGES", 'french')
 
 bench <- "benchmark_query/20150105.csv"
 
-h <- 4
-w <- 10
+h <- 8
+w <- 8
 
 read_data <- function(file) {
   df <- read.csv(file, header=TRUE, sep = ";", strip.white=TRUE)
